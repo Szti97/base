@@ -10,9 +10,11 @@ import hu.bme.mit.train.interfaces.TrainEmergencyBreak;
 
 public class TrainSystem {
 
-	private TrainController controller = new TrainControllerImpl();
+	private TrainControllerImpl controllerimp = new TrainControllerImpl();
+	private TrainController controller = controllerimp;
 	private TrainUser user = new TrainUserImpl(controller);
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
+	private TrainEmergencyBreak emergencyBreak = controllerimp;
 
 	public TrainController getController() {
 		return controller;
@@ -28,7 +30,7 @@ public class TrainSystem {
 
 	public TrainEmergencyBreak getEmergencyBreak()
 	{
-		return controller;
+		return emergencyBreak;
 	}
 
 }
