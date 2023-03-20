@@ -1,8 +1,9 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+import hu.bme.mit.train.interfaces.TrainEmergencyBreak;
 
-public class TrainControllerImpl implements TrainController {
+public class TrainControllerImpl implements TrainController, TrainEmergencyBreak {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
@@ -44,6 +45,12 @@ public class TrainControllerImpl implements TrainController {
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
 		this.step = joystickPosition;		
+	}
+
+	@Override
+	public void emergencyBreak()
+	{
+		referenceSpeed = 0;
 	}
 
 }
