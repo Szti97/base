@@ -8,10 +8,12 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
+import hu.bme.mit.train.interfaces.TrainEmergencyBreak;
 
 public class TrainSystemTest {
 
 	TrainController controller;
+	TrainEmergencyBreak emergencyBreak;
 	TrainSensor sensor;
 	TrainUser user;
 	
@@ -21,6 +23,7 @@ public class TrainSystemTest {
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
+		emergencyBreak = system.getEmergencyBreak();
 
 		sensor.overrideSpeedLimit(50);
 	}
@@ -47,6 +50,16 @@ public class TrainSystemTest {
 		controller.followSpeed();
 		user.overrideJoystickPosition(-5);
 		controller.followSpeed();
+		Assert.assertEquals(0, controller.getReferenceSpeed());
+	}
+
+	@Test
+	public void TestEmergencyBreakFunctionality()
+	{
+		user.overrideJoystickPosition(5);
+		controller.followSpeed();
+		Assert.assertEquals(5, controller.getReferenceSpeed());
+		emergencyBreak.emergencyBreak();
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
