@@ -4,7 +4,11 @@ This is a sample application for the verification laboratory.
 
 ## Getting started
 
+<<<<<<< HEAD
 ## task 5 modification
+=======
+### Task 5 branch-B modification
+>>>>>>> branch-B
 
 * The application is implemented in Java.
 * The project can be built using [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/) (currently **Maven** is preferred).
