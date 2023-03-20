@@ -6,10 +6,10 @@ This is a sample application for the verification laboratory.
 
 * The application is implemented in Java.
 * The project can be built using [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/) (currently **Maven** is preferred).
-* [JUnit](https://junit.org/junit5/) is used for tests.
+* [JUnit](https://junit.org/junit5/) is used for tests.[^1]
 
 ### Maven
-Clone the repository and execute Maven to build the application:
+Clone the repository and execute Maven to build the application: [^note]
 
 ```
 mvn compile
@@ -62,3 +62,8 @@ The figure below illustrates this behavior using an example.
 1. As the joystick remains at a positive value, the reference speed is incremented again.
 1. However, it reaches the speed limit so in the next step it is not incremented even though the joystick still has a positive value.
 1. Later, the joystick is set to a negative position for one time unit, making the reference speed to decrease as well.
+
+### Comment 3
+
+[^1]: Comment 1.
+[^note]: Comment 2.
