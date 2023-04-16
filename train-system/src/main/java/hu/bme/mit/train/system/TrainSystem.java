@@ -33,4 +33,11 @@ public class TrainSystem {
 		return emergencyBreak;
 	}
 
+	public void runTrain(long millisecinterval, long duration)
+	{		
+		for(long i=0;i<duration/millisecinterval;i++)
+		controller.followSpeed();
+		Thread.sleep(millisecinterval);
+	}	
+
 }
