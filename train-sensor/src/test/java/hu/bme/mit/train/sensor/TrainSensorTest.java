@@ -29,12 +29,32 @@ public class TrainSensorTest {
 
     @Test
     public void OverrideSpeedLimit_lessthan0_AlarmState_True() {
-        mockController.setSpeedLimit(-1);
-        Assert.assertTrue(mockUser.getAlarmState());
+        // when(mockController.setSpeedLimit(-1));
+
+        sensor.overrideSpeedLimit(-1);
+
+        verify(mockUser, times(1)).setAlarmState(true);
     }
 
     @Test
     public void OverrideSpeedLimit_morethan500_AlarmState_True() {
+        sensor.overrideSpeedLimit(501);
 
+        verify(mockUser, times(1)).setAlarmState(true);
+    }
+
+    @Test
+    public void OverrideSpeedLimit_lessthan50percent_AlarmState_True() {
+        when(mockController.getReferenceSpeed()).thenReturn(150);
+        sensor.overrideSpeedLimit(40);
+
+        verify(mockUser, times(1)).setAlarmState(true);
+    }
+
+    @Test
+    public void OverrideSpeedLimit_modifylimit_AlarmState_False() {
+        when(mockController.getReferenceSpeed()).thenReturn(150);
+        sensor.overrideSpeedLimit(170);
+        verify(mockUser, times(0)).setAlarmState(true);
     }
 }

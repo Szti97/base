@@ -14,13 +14,12 @@ public class TrainControllerImpl implements TrainController, TrainEmergencyBreak
 		if (referenceSpeed < 0) {
 			referenceSpeed = 0;
 		} else {
-		    if(referenceSpeed+step > 0) {
-                referenceSpeed += step;
-            } else {
-		        referenceSpeed = 0;
-            }
+			if (referenceSpeed + step > 0) {
+				referenceSpeed += step;
+			} else {
+				referenceSpeed = 0;
+			}
 		}
-
 
 		enforceSpeedLimit();
 	}
@@ -34,7 +33,7 @@ public class TrainControllerImpl implements TrainController, TrainEmergencyBreak
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 		enforceSpeedLimit();
-		
+
 	}
 
 	private void enforceSpeedLimit() {
@@ -45,13 +44,22 @@ public class TrainControllerImpl implements TrainController, TrainEmergencyBreak
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition;		
+		this.step = joystickPosition;
 	}
 
 	@Override
-	public void emergencyBreak()
-	{
+	public void emergencyBreak() {
 		referenceSpeed = 0;
+	}
+
+	@Override
+	public void setReferenceSpeed(int newspeed) {
+		if (newspeed < 0)
+			this.referenceSpeed = 0;
+		else if (newspeed > speedLimit)
+			this.referenceSpeed = speedLimit;
+		else
+			this.referenceSpeed = newspeed;
 	}
 
 }
