@@ -32,5 +32,11 @@ public class TrainSystem {
 	{
 		return emergencyBreak;
 	}
+	public void randomRefSpeed(){
+		for(int i=0;i<100;i++){
+		controllerimp.setJoystickPosition(1);
+		controllerimp.followSpeed(new Random(10));
+		}
+	}
 
 }
