@@ -21,6 +21,7 @@ public class TrainControllerImpl implements TrainController, TrainEmergencyBreak
             }
 		}
 
+
 		enforceSpeedLimit();
 	}
 
