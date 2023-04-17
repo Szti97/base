@@ -7,6 +7,7 @@ import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.sensor.TrainSensorImpl;
 import hu.bme.mit.train.user.TrainUserImpl;
 import hu.bme.mit.train.interfaces.TrainEmergencyBreak;
+//import java.lang.Thread;
 
 public class TrainSystem {
 
@@ -32,5 +33,12 @@ public class TrainSystem {
 	{
 		return emergencyBreak;
 	}
+
+	public void runTrain(long millisecinterval, long duration) throws InterruptedException
+	{		
+		for(long i=0;i<duration/millisecinterval;i++)
+		controller.followSpeed();
+		Thread.sleep(millisecinterval);
+	}	
 
 }
