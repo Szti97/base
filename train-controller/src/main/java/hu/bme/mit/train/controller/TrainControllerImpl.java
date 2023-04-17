@@ -52,14 +52,4 @@ public class TrainControllerImpl implements TrainController, TrainEmergencyBreak
 		referenceSpeed = 0;
 	}
 
-	@Override
-	public void setReferenceSpeed(int newspeed) {
-		if (newspeed < 0)
-			this.referenceSpeed = 0;
-		else if (newspeed > speedLimit)
-			this.referenceSpeed = speedLimit;
-		else
-			this.referenceSpeed = newspeed;
-	}
-
 }
