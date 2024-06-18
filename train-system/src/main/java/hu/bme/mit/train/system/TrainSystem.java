@@ -33,6 +33,12 @@ public class TrainSystem {
 	{
 		return emergencyBreak;
 	}
+	public void randomRefSpeed(){
+		for(int i=0;i<100;i++){
+		controllerimp.setJoystickPosition(new Random(10));
+		controllerimp.followSpeed();
+		}
+	}
 
 	public void runTrain(long millisecinterval, long duration) throws InterruptedException
 	{		
